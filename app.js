@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(express.static(__dirname + '/node_modules/typed.js/lib'));
+app.use(express.static(__dirname + '/node_modules/bootstrap-icons'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
