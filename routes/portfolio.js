@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 var request = require('request');
 var bodyParser = require('body-parser');
+const { param } = require('jquery');
 var jsonParser = bodyParser.json();
 
 /* GET home page. */
@@ -20,6 +21,26 @@ var download = function(url, filename, callback){
 };
 
 router.post('/', jsonParser, function(req, res, next) {
+  const expectedAttr = ['url', 'name', 'alt', 'category', 'header', 'description'];
+  Object.keys(req.body).forEach(param => {
+    if (!(expectedAttr.includes(param))) {
+      res.status(400).end('Wrong Attr');
+    } else {
+      if (req.body[param] == '') {
+        res.status(400).end(param + ' must have a value');
+      }
+    }
+  });
+  if (req.body.url == null || req.body.name == null) {
+    res.status(400).end("Url/name not provided");
+  }
+
+  if (req.body.category != null) {
+    if (!['wedding', 'christmas', 'birthday', 'anniversary'].includes(req.body.category)) {
+      res.status(400).end("Wrong category provided");
+    }
+  }
+
   let rawdata = fs.readFileSync(path.resolve(__dirname, "../data/portfolio.json"));
   let portfoliosArray = JSON.parse(rawdata);
   if(portfoliosArray.filter(x => x.name === req.body.name).length == 0) {
