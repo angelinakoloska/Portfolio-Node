@@ -6,12 +6,14 @@
         <link rel="stylesheet" href="../css/bootstrap.min.css"/>
         <link href="../css/contact/navbar.css" rel="stylesheet">
         <link href="../css/contact/contact.css" rel="stylesheet">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
       </head>
-    <body class="position-relative" data-bs-spy="scroll">
-      <%- include('./partials/navbar.ejs') %>
-      <div data-spy="scroll" data-target="#navbar" data-offset="0">
-        <%- include('./partials/contact.ejs') %>
-      </div>
-      <%- include('./partials/scripts.ejs') %>
+      <body class="position-relative" data-bs-spy="scroll">
+        <%- include('./partials/navbar.ejs') %>
+        <div data-spy="scroll" data-target="#navbar" data-offset="0">
+          <%- include('./partials/contact.ejs') %>
+          <%- include('./partials/map.ejs') %>
+        </div>
+        <%- include('./partials/scripts.ejs') %>
     </body>
 </html>

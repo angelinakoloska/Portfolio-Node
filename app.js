@@ -7,6 +7,7 @@ var passport = require('passport')
 var session = require('express-session');
 var JsonStore = require('express-session-json')(session);
 
+
 var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var aboutRouter = require('./routes/about');
